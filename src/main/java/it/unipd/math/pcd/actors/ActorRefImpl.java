@@ -1,27 +1,32 @@
 package it.unipd.math.pcd.actors;
 
 /**
- * Created by Daniele Marin on 19/01/16.
+ * Created by Daniele Marin on 20/01/16.
  */
-public class ActorRefImpl<T extends Message> implements ActorRef {
-
-    protected final AbsActorSystem sys;
+public class ActorRefImpl<T extends Message> implements ActorRef{
 
     /**
-     * Costruttore ad un parametro
-     * @param sys è un riferimento ad un istanza di tipo derivato da AbsActorSystem
+     * mantengo un riferimento all'ActorSystem per poter ottenere l'attore
      */
-    public ActorRefImpl(AbsActorSystem sys) { this.sys = sys; }
+    protected final AbsActorSystem actorSystem;
+
+    /**
+     * costruttore ad un parametro
+     * @param actorSystem riferimento ad un'istanza di un tipo derivato da AbsActorSystem
+     */
+    public ActorRefImpl( AbsActorSystem actorSystem ) { this.actorSystem = actorSystem; }
 
 
     @Override
     public void send(Message message, ActorRef to) {
-        /**
-         * spedisce il messaggio a un actor inserendolo nella sua mailBox
-         *
-         */
+
     }
 
+    /**
+     * Compara un due oggetti
+     * @param o riferimento ad un oggetto
+     * @return 0 se sono uguali -1 altrimenti
+     */
     @Override
     public int compareTo(Object o) {
         return (this == o) ? 0 : -1;
