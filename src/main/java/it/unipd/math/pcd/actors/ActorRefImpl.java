@@ -19,7 +19,8 @@ public class ActorRefImpl<T extends Message> implements ActorRef{
 
     @Override
     public void send(Message message, ActorRef to) {
-
+        // Ottengo il riferimento all'attore riferito da ActorRef
+        //Actor reciver = actorSystem.
     }
 
     /**

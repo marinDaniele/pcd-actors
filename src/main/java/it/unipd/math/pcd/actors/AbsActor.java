@@ -46,6 +46,21 @@ package it.unipd.math.pcd.actors;
  */
 public abstract class AbsActor<T extends Message> implements Actor<T> {
 
+
+    /**
+     * Container for PostedBy objects
+     */
+    private final MailBox<T, ActorRef<T> > mailBox;
+
+    /**
+     * variabile booleana che segnala se l'attore è attivo o no
+     */
+    private boolean active;
+
+    /**
+     * riferimento ad un oggeto di tipo PostedBy contenuto nella mailBox
+     */
+    private PostedBy<T,ActorRef<T>> posted;
     /**
      * Self-reference of the actor
      */
@@ -55,6 +70,100 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
      * Sender of the current message
      */
     protected ActorRef<T> sender;
+
+    /**
+     * costruttore
+     */
+    public AbsActor(){
+        mailBox = new MailBoxImpl<>();
+        active = true;
+
+        /**
+         * Creo ed avvio il thread che durante tutta la vita dell'Actor
+         * si occuperà di svuotare la mailBox e di invocare per ogni messaggio
+         * il metodo receve(Message) dell'Actor
+         */
+        Thread reciveProcess = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while ( active ) {
+                    while ( mailBox.isEmpty() ) {
+                        try {
+                            mailBox.wait();
+                        }
+                        catch ( InterruptedException e ) {
+                            e.printStackTrace();
+                        }
+                    }
+                    synchronized (mailBox) {
+                        // recupero il messagio più vecchio presente nella mailBox
+                        posted = mailBox.removeLast();
+                        // imposto sender con il riferimento del sender del messaggio
+                        sender = posted.getSender();
+                        // notifico hai thread in attesa che possono risvegliarsi
+                        mailBox.notifyAll();
+                    }
+                    // invoco il metodo recive passandoli il messaggio
+                    receive(posted.getMessage());
+
+                }
+                // L'attore non è più attivo quindi devo svuotare la mailBox
+                while ( !mailBox.isEmpty() ) {
+                    synchronized (mailBox) {
+                        // recupero il messagio più vecchio presente nella mailBox
+                        posted = mailBox.removeLast();
+                        // imposto sender con il riferimento del sender del messaggio
+                        sender = posted.getSender();
+                    }
+                    // invoco il metodo recive passandoli il messaggio
+                    receive(posted.getMessage());
+                }
+
+            }
+        });
+
+        // avvio il thread reciveProcess
+        reciveProcess.start();
+    }
+
+    /**
+     * Restituisce lo stato dell'Actor, attivo o no
+     * @return true se l'attore è attivo, false altrimenti
+     */
+    public boolean isActive() { return active; }
+
+    /**
+     * Disattiva l'attore su cui viene invocato
+     */
+    public void deactiveActor() { active = false; }
+
+    /**
+     * Metodo che avvia un thread per aggiungere un messaggio alla mailBox
+     * Il messaggio verrà inserito alla mailBox solamente se l'attore è attivo
+     * @param message oggetto di tipo derivato Message
+     * @param sender oggetto di tipo derivato da ActorRef
+     */
+    public void addToMailBox(final T message, final ActorRef<T> sender) {
+
+        // Creo un thread che aggiunge un messaggio alla mailBox
+        // solamente se l'attore è ancora attivo
+        Thread addMessage = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if( active ) {
+                    synchronized (mailBox) {
+                        PostedBy<T,ActorRef<T>> posted = new PostedBy<>(message, sender);
+                        mailBox.add(posted);
+                        mailBox.notifyAll();
+                    }
+                }
+            }
+        });
+
+        // avvio il thread
+        addMessage.start();
+
+    }
 
     /**
      * Sets the self-referece.

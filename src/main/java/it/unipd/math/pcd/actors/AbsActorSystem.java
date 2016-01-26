@@ -80,5 +80,20 @@ public abstract class AbsActorSystem implements ActorSystem {
         return this.actorOf(actor, ActorMode.LOCAL);
     }
 
+
+    /**
+     * Questo metodo permette di ottenere il l'attore riferito da un actorRef
+     * se presente nella Map actors
+     * @param actorRef riferimento ad un attore
+     * @return restituisce un attore, se presente nella Map
+     * @throws NoSuchActorException se l'attore non è presente nella Map
+     */
+    public Actor giveMeActor(ActorRef<?> actorRef) throws NoSuchActorException {
+        if( actors.containsKey(actorRef) )
+            return actors.get(actorRef);
+        else
+            throw new NoSuchActorException();
+    }
+
     protected abstract ActorRef createActorReference(ActorMode mode);
 }
