@@ -54,7 +54,7 @@ public abstract class AbsActorSystem implements ActorSystem {
     /**
      * Associates every Actor created with an identifier.
      */
-    private Map<ActorRef<?>, Actor<?>> actors = new ConcurrentHashMap<>();
+    protected final Map<ActorRef<?>, Actor<?>> actors = new ConcurrentHashMap<>();
 
     @Override
     public ActorRef<? extends Message> actorOf(Class<? extends Actor> actor, ActorMode mode) {
