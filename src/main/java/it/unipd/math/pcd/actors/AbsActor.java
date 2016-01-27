@@ -100,8 +100,6 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
                         posted = mailBox.removeLast();
                         // imposto sender con il riferimento del sender del messaggio
                         sender = posted.getSender();
-                        // notifico hai thread in attesa che possono risvegliarsi
-                        mailBox.notifyAll();
                     }
                     // invoco il metodo recive passandoli il messaggio
                     receive(posted.getMessage());
