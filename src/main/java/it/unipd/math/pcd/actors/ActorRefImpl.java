@@ -24,6 +24,7 @@ public class ActorRefImpl<T extends Message> implements ActorRef{
         // Se l'attore a cui spedisco il messaggio è attivo
         // procedo con il send, altrimenti non faccio nulla
         if (reciver.isActive())
+            //spedisco il messaggio e il suo sender
             reciver.addToMailBox(message, this);
     }
 
