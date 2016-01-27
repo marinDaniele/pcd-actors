@@ -9,8 +9,14 @@ package it.unipd.math.pcd.actors;
 public class BasicActorSystem extends AbsActorSystem {
     @Override
     protected ActorRef createActorReference(ActorMode mode) {
-        // costruisce e restituisce un ActorRefImpl
-        return new ActorRefImpl(this);
+        if (mode == ActorMode.LOCAL) {
+            // costruisce e restituisce un ActorRefImpl
+            return new ActorRefImpl(this);
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
+
     }
 
     @Override

@@ -77,6 +77,11 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
     public AbsActor(){
         mailBox = new MailBoxImpl<>();
         active = true;
+        startReciveProcess();
+    }
+
+
+    private void startReciveProcess() {
 
         /**
          * Creo ed avvio il thread che durante tutta la vita dell'Actor
@@ -88,11 +93,13 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
             public void run() {
                 while ( active ) {
                     while ( mailBox.isEmpty() ) {
-                        try {
-                            mailBox.wait();
-                        }
-                        catch ( InterruptedException e ) {
-                            e.printStackTrace();
+                        synchronized (mailBox) {
+                            try {
+                                mailBox.wait();
+                            }
+                            catch ( InterruptedException e ) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                     synchronized (mailBox) {
@@ -100,9 +107,9 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
                         posted = mailBox.removeLast();
                         // imposto sender con il riferimento del sender del messaggio
                         sender = posted.getSender();
+                        // invoco il metodo recive passandoli il messaggio
+                        receive(posted.getMessage());
                     }
-                    // invoco il metodo recive passandoli il messaggio
-                    receive(posted.getMessage());
 
                 }
                 // L'attore non è più attivo quindi devo svuotare la mailBox
@@ -112,9 +119,9 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
                         posted = mailBox.removeLast();
                         // imposto sender con il riferimento del sender del messaggio
                         sender = posted.getSender();
+                        // invoco il metodo recive passandoli il messaggio
+                        receive(posted.getMessage());
                     }
-                    // invoco il metodo recive passandoli il messaggio
-                    receive(posted.getMessage());
                 }
 
             }
@@ -122,8 +129,8 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
 
         // avvio il thread reciveProcess
         reciveProcess.start();
-    }
 
+    }
     /**
      * Restituisce lo stato dell'Actor, attivo o no
      * @return true se l'attore è attivo, false altrimenti
@@ -139,9 +146,9 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
      * Metodo che avvia un thread per aggiungere un messaggio alla mailBox
      * Il messaggio verrà inserito alla mailBox solamente se l'attore è attivo
      * @param message oggetto di tipo derivato Message
-     * @param sender oggetto di tipo derivato da ActorRef
+     * @param send oggetto di tipo derivato da ActorRef
      */
-    public void addToMailBox(final T message, final ActorRef<T> sender) {
+    public void addToMailBox(final T message, final ActorRef<T> send) {
 
         // Creo un thread che aggiunge un messaggio alla mailBox
         // solamente se l'attore è ancora attivo
@@ -150,7 +157,7 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
             public void run() {
                 if( active ) {
                     synchronized (mailBox) {
-                        PostedBy<T,ActorRef<T>> posted = new PostedBy<>(message, sender);
+                        PostedBy<T,ActorRef<T>> posted = new PostedBy<>(message, send);
                         mailBox.add(posted);
                         mailBox.notifyAll();
                     }
