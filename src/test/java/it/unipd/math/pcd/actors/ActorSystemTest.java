@@ -105,4 +105,16 @@ public class ActorSystemTest {
         system.stop(ref1);
         system.stop(ref1);
     }
+
+    // test per vedere come si comporta la gestione messaggi dopo lo stop
+    @Test
+    public void dopoLoStop() {
+        ActorRef ref1 = system.actorOf(TrivialActor.class);
+
+        for (int i = 0; i < 50; i++) {
+            ref1.send(new TrivialMessage(), ref1);
+        }
+        system.stop(ref1);
+    }
+    //___________________________________________________________________
 }

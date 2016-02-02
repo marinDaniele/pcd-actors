@@ -91,7 +91,7 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
         Thread reciveProcess = new Thread(new Runnable() {
             @Override
             public void run() {
-                while ( active ) {
+                while ( AbsActor.this.active ) {
                     while ( mailBox.isEmpty() ) {
                         synchronized (mailBox) {
                             try {
@@ -109,6 +109,15 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
                         sender = posted.getSender();
                         // invoco il metodo recive passandoli il messaggio
                         receive(posted.getMessage());
+                        //_________________________________________
+                        // aggiunto per test
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        //____________________________________________
+
                     }
 
                 }
@@ -121,6 +130,11 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
                         sender = posted.getSender();
                         // invoco il metodo recive passandoli il messaggio
                         receive(posted.getMessage());
+
+                        //____________________________________________
+                        System.out.println("ricevuto 1 msg dopo il deactive");
+                        //____________________________________________
+
                     }
                 }
 
@@ -140,7 +154,10 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
     /**
      * Disattiva l'attore su cui viene invocato
      */
-    public void deactiveActor() { active = false; }
+    public void deactiveActor() {
+        active = false;
+
+    }
 
     /**
      * Metodo che avvia un thread per aggiungere un messaggio alla mailBox
