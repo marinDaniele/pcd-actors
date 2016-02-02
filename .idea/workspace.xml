@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="69f1b4d9-749f-446c-add7-5daedd5b692b" name="Default" comment="create BasicActorSystem, MailBox, MailBoxImpl, PostedBy ecc">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/AbsActor.java" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/AbsActor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/ActorSystemTest.java" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/ActorSystemTest.java" />
+    <list default="true" id="69f1b4d9-749f-446c-add7-5daedd5b692b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/AbsActor$1.class" afterPath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/AbsActor$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/AbsActor$2.class" afterPath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/AbsActor$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/AbsActor.class" afterPath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/AbsActor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/it/unipd/math/pcd/actors/ActorSystemTest.class" afterPath="$PROJECT_DIR$/target/test-classes/it/unipd/math/pcd/actors/ActorSystemTest.class" />
     </list>
     <ignored path="pcd-actors.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,8 +44,8 @@
       <file leaf-file-name="AbsActor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/AbsActor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.82495946">
-              <caret line="135" column="70" selection-start-line="135" selection-start-column="70" selection-end-line="135" selection-end-column="70" />
+            <state vertical-scroll-proportion="0.19286872">
+              <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -893,7 +894,7 @@
       <workItem from="1453909179974" duration="624000" />
       <workItem from="1454322298249" duration="112000" />
       <workItem from="1454410808324" duration="918000" />
-      <workItem from="1454425378835" duration="5048000" />
+      <workItem from="1454425378835" duration="5154000" />
     </task>
     <task id="LOCAL-00001" summary="reinizio">
       <created>1453219304661</created>
@@ -913,7 +914,13 @@
       <option name="project" value="LOCAL" />
       <updated>1453826711387</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="test">
+      <created>1454435882042</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1454435882042</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -949,7 +956,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36073000" />
+    <option name="totallyTimeSpent" value="36179000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1279" height="737" extended-state="6" />
@@ -1013,7 +1020,8 @@
     <MESSAGE value="reinizio" />
     <MESSAGE value="creata classe PostedBy" />
     <MESSAGE value="create BasicActorSystem, MailBox, MailBoxImpl, PostedBy ecc" />
-    <option name="LAST_COMMIT_MESSAGE" value="create BasicActorSystem, MailBox, MailBoxImpl, PostedBy ecc" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1427,8 +1435,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/AbsActor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82495946">
-          <caret line="135" column="70" selection-start-line="135" selection-start-column="70" selection-end-line="135" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.19286872">
+          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
           <folding />
         </state>
       </provider>
