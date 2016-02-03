@@ -91,7 +91,7 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
         Thread reciveProcess = new Thread(new Runnable() {
             @Override
             public void run() {
-                while ( AbsActor.this.active ) {
+                while ( active ) {
                     while ( mailBox.isEmpty() ) {
                         synchronized (mailBox) {
                             try {
@@ -109,42 +109,16 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
                         sender = posted.getSender();
                         // invoco il metodo recive passandoli il messaggio
                         receive(posted.getMessage());
-                        //_________________________________________
-                        // aggiunto per test
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        //____________________________________________
-
-                    }
-
-                }
-                // L'attore non è più attivo quindi devo svuotare la mailBox
-                while ( !mailBox.isEmpty() ) {
-                    synchronized (mailBox) {
-                        // recupero il messagio più vecchio presente nella mailBox
-                        posted = mailBox.removeLast();
-                        // imposto sender con il riferimento del sender del messaggio
-                        sender = posted.getSender();
-                        // invoco il metodo recive passandoli il messaggio
-                        receive(posted.getMessage());
-
-                        //____________________________________________
-                        System.out.println("ricevuto 1 msg dopo il deactive");
-                        //____________________________________________
-
                     }
                 }
-
             }
         });
 
         // avvio il thread reciveProcess
         reciveProcess.start();
-
     }
+
+
     /**
      * Restituisce lo stato dell'Actor, attivo o no
      * @return true se l'attore è attivo, false altrimenti
@@ -155,7 +129,21 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
      * Disattiva l'attore su cui viene invocato
      */
     public void deactiveActor() {
+        // disattivo l'attore mettendolo a false
         active = false;
+
+        // L'attore non è più attivo quindi devo svuotare la mailBox
+        while ( !mailBox.isEmpty() ) {
+            synchronized (mailBox) {
+                // recupero il messagio più vecchio presente nella mailBox
+                posted = mailBox.removeLast();
+                // imposto sender con il riferimento del sender del messaggio
+                sender = posted.getSender();
+                // invoco il metodo recive passandoli il messaggio
+                receive(posted.getMessage());
+
+            }
+        }
 
     }
 
