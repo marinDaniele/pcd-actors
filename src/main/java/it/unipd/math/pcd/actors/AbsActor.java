@@ -127,6 +127,7 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
 
     /**
      * Disattiva l'attore su cui viene invocato
+     * e si occupa di svuotare la mailBox dai messaggi rimanenti
      */
     public void deactiveActor() {
         // disattivo l'attore mettendolo a false
