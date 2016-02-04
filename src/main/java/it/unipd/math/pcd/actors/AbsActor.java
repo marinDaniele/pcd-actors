@@ -57,6 +57,12 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
      */
     private boolean active;
 
+    private boolean haveFinished;
+
+    public boolean getHaveFinished() {
+        return haveFinished;
+    }
+
     /**
      * riferimento ad un oggeto di tipo PostedBy contenuto nella mailBox
      */
@@ -71,12 +77,14 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
      */
     protected ActorRef<T> sender;
 
+
     /**
      * costruttore
      */
     public AbsActor(){
         mailBox = new MailBoxImpl<>();
         active = true;
+        haveFinished = false;
         startReciveProcess();
     }
 
@@ -91,29 +99,46 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
         Thread reciveProcess = new Thread(new Runnable() {
             @Override
             public void run() {
-                while ( active ) {
-                    while ( mailBox.isEmpty() ) {
-                        synchronized (mailBox) {
-                            try {
+                try {
+                    while ( active ) {
+                        while ( mailBox.isEmpty() ) {
+                            synchronized (mailBox) {
+
                                 mailBox.wait();
-                            }
-                            catch ( InterruptedException e ) {
-                                e.printStackTrace();
+
                             }
                         }
+                        synchronized (mailBox) {
+                            // recupero il messagio più vecchio presente nella mailBox
+                            posted = mailBox.removeLast();
+                            // imposto sender con il riferimento del sender del messaggio
+                            sender = posted.getSender();
+                            // invoco il metodo recive passandoli il messaggio
+                            receive(posted.getMessage());
+                        }
                     }
-                    synchronized (mailBox) {
-                        // recupero il messagio più vecchio presente nella mailBox
-                        posted = mailBox.removeLast();
-                        // imposto sender con il riferimento del sender del messaggio
-                        sender = posted.getSender();
-                        // invoco il metodo recive passandoli il messaggio
-                        receive(posted.getMessage());
+                }
+                catch (InterruptedException ie) {
+                    ie.printStackTrace();
+                }
+                finally {
+                    // L'attore non è più attivo quindi devo svuotare la mailBox
+                    while ( !mailBox.isEmpty() ) {
+                        synchronized (mailBox) {
+                            // recupero il messagio più vecchio presente nella mailBox
+                            posted = mailBox.removeLast();
+                            // imposto sender con il riferimento del sender del messaggio
+                            sender = posted.getSender();
+                            // invoco il metodo recive passandoli il messaggio
+                            receive(posted.getMessage());
+
+                        }
                     }
                 }
             }
         });
 
+        //reciveProcess = new Thread( new ReciveProcess(this,mailBox) );
         // avvio il thread reciveProcess
         reciveProcess.start();
     }
@@ -132,19 +157,6 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
     public void deactiveActor() {
         // disattivo l'attore mettendolo a false
         active = false;
-
-        // L'attore non è più attivo quindi devo svuotare la mailBox
-        while ( !mailBox.isEmpty() ) {
-            synchronized (mailBox) {
-                // recupero il messagio più vecchio presente nella mailBox
-                posted = mailBox.removeLast();
-                // imposto sender con il riferimento del sender del messaggio
-                sender = posted.getSender();
-                // invoco il metodo recive passandoli il messaggio
-                receive(posted.getMessage());
-
-            }
-        }
 
     }
 

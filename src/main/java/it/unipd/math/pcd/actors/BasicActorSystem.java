@@ -25,8 +25,10 @@ public class BasicActorSystem extends AbsActorSystem {
         synchronized (actors) {
             // recupero l'Actor relativo al ActorRef
             AbsActor attore = (AbsActor) giveMeActor(actor);
+
             // Disattivo l'Actor
             attore.deactiveActor();
+
             // Rimuovo L'Actor dal sistema
             actors.remove(actor);
         }
@@ -39,4 +41,16 @@ public class BasicActorSystem extends AbsActorSystem {
         }
 
     }
+
+    //-----------------------------
+    // solo per test
+    private int counter=0;
+
+    public void incCounter() {
+        counter++;
+    }
+
+    public int getCounter() {return counter;}
+
+    //------------------------------
 }
