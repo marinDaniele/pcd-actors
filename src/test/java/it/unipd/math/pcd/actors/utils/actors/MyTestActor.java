@@ -37,9 +37,8 @@
  */
 package it.unipd.math.pcd.actors.utils.actors;
 
-import it.unipd.math.pcd.actors.AbsActor;
-import it.unipd.math.pcd.actors.AbsActorSystem;
-import it.unipd.math.pcd.actors.BasicActorSystem;
+import it.unipd.math.pcd.actors.*;
+import it.unipd.math.pcd.actors.utils.MyTestActorSystem;
 import it.unipd.math.pcd.actors.utils.messages.TrivialMessage;
 
 /**
@@ -49,7 +48,7 @@ import it.unipd.math.pcd.actors.utils.messages.TrivialMessage;
  * @version 1.0
  * @since 1.0
  */
-public class MyTestActor extends AbsActor<TrivialMessage> {
+public class MyTestActor extends TrivialActor {
 
     private AbsActorSystem refAs;
 
@@ -58,8 +57,51 @@ public class MyTestActor extends AbsActor<TrivialMessage> {
     }
 
     @Override
+    public void addToMailBox(final TrivialMessage message, final ActorRef<TrivialMessage> send) {
+
+        // Creo un thread che aggiunge un messaggio alla mailBox
+        // solamente se l'attore è ancora attivo
+        Thread addMessage = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if( isActive() ) {
+                    synchronized (mailBox) {
+                        PostedBy<TrivialMessage,ActorRef<TrivialMessage>> posted = new PostedBy<>(message, send);
+                        mailBox.add(posted);
+                        /**
+                         * Decommentare l'operazione solamente per
+                         * effettuare il test AllMessagesProcessedTest
+                         * L'operazione incrementa un contatore
+                         * che conta i pessaggi effettivamenti aggiunti alla mailBox
+                         */
+                        synchronized (this){ numeroMessaggiInviati++;}
+
+                        // notifico a chi è in attesa sulla mailBox che 'è un nuovo messaggio
+                        mailBox.notifyAll();
+                    }
+                }
+            }
+        });
+
+        // avvio il thread
+        addMessage.start();
+
+    }
+
+    /**
+     * Variabile privata e metodo utilizzati SOLAMENTE per il test AllMessagesProcessedTest
+     * Decommentare la variabile e il metodo per effettuare il test
+     */
+    private volatile int numeroMessaggiInviati;
+    public synchronized int getNumeroMessaggiInviati() { return numeroMessaggiInviati; }
+
+    /**
+     * Quando invoco recive(...) incremento il contatore dei messaggi processati
+     * @param message The type of messages the actor can receive
+     */
+    @Override
     public void receive(TrivialMessage message) {
         // increment counter
-        ((BasicActorSystem)refAs).incCounter();
+        ((MyTestActorSystem)refAs).incReciveMessages();
     }
 }

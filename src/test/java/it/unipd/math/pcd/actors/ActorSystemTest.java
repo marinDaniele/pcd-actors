@@ -39,7 +39,6 @@ package it.unipd.math.pcd.actors;
 
 import it.unipd.math.pcd.actors.exceptions.NoSuchActorException;
 import it.unipd.math.pcd.actors.utils.ActorSystemFactory;
-import it.unipd.math.pcd.actors.utils.actors.MyTestActor;
 import it.unipd.math.pcd.actors.utils.actors.TrivialActor;
 import it.unipd.math.pcd.actors.utils.messages.TrivialMessage;
 import org.junit.Assert;
@@ -107,24 +106,4 @@ public class ActorSystemTest {
         system.stop(ref1);
     }
 
-    // test che verifica che l'attore processi tutti i messaggi
-    @Test
-    public void actoreProcessAllMessages() {
-        ActorRef ref1 = system.actorOf(MyTestActor.class);
-
-        Actor act = ((BasicActorSystem)system).giveMeActor(ref1);
-
-        ((MyTestActor)act).setRefAs((AbsActorSystem)system);
-
-        for (int i = 0; i < 8000; i++) {
-            ref1.send(new TrivialMessage(), ref1);
-        }
-
-        system.stop(ref1);
-
-        int count= ((BasicActorSystem)system).getCounter();
-
-        Assert.assertEquals("devono essere processati tutti i messaggi",8000,count);
-
-    }
 }

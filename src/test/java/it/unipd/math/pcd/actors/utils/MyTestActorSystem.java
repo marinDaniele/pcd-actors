@@ -1,25 +1,24 @@
-package it.unipd.math.pcd.actors;
+package it.unipd.math.pcd.actors.utils;
 
+import it.unipd.math.pcd.actors.*;
 import it.unipd.math.pcd.actors.exceptions.NoSuchActorException;
+import it.unipd.math.pcd.actors.utils.actors.MyTestActor;
 
 /**
- * Created by Daniele Marin on 26/01/16.
- *
- * Le istanze della seguente classe possono gestire solamente attori
- * con ActorMode LOCAL
+ * Created by Daniele Marin on 04/02/16.
  */
-public class BasicActorSystem extends AbsActorSystem {
-    @Override
-    protected ActorRef createActorReference(ActorMode mode) {
-        if (mode == ActorMode.LOCAL) {
-            // costruisce e restituisce un ActorRefImpl
-            return new ActorRefImpl(this);
-        }
-        else {
-            throw new IllegalArgumentException();
-        }
+public class MyTestActorSystem extends BasicActorSystem {
 
-    }
+
+    //-----------------------------
+    // solo per test
+    private volatile int counterOfRecived=0;
+
+    public void incReciveMessages() { counterOfRecived++; }
+
+    public int getRecivedMessage() { return counterOfRecived; }
+
+    public int getNumSendMessages() { return numSendMessages; }
 
     @Override
     public void stop(ActorRef<?> actor) {
@@ -44,6 +43,13 @@ public class BasicActorSystem extends AbsActorSystem {
                         }
                     }
 
+                    /**
+                     * Comando che incrementa la variabile utilizzata nel test AllMessagesProcessedTest
+                     * Decommentarlo per effettuare il test
+                     */
+                    numSendMessages = ((MyTestActor) attore).getNumeroMessaggiInviati();
+
+
                     // Rimuovo L'Actor dal sistema
                     actors.remove(actor);
                 }
@@ -59,12 +65,11 @@ public class BasicActorSystem extends AbsActorSystem {
 
     }
 
-    @Override
-    public void stop() {
-        for (ActorRef actorRef : actors.keySet() ) {
-            stop(actorRef);
-        }
+    /**
+     * Variabile creata per il test AllMessagesProcessedTest
+     * Decommentarla per effettuare il test
+     */
+    public int numSendMessages;
 
-    }
-
+    //------------------------------
 }

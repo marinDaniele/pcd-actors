@@ -37,6 +37,8 @@
  */
 package it.unipd.math.pcd.actors;
 
+import it.unipd.math.pcd.actors.exceptions.NoSuchActorException;
+
 /**
  * Defines common properties of all actors.
  *
@@ -50,23 +52,18 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
     /**
      * Container for PostedBy objects
      */
-    private final MailBox<T, ActorRef<T> > mailBox;
+    protected final MailBox<T, ActorRef<T> > mailBox;
 
     /**
      * variabile booleana che segnala se l'attore è attivo o no
      */
-    private boolean active;
-
-    private boolean haveFinished;
-
-    public boolean getHaveFinished() {
-        return haveFinished;
-    }
+    private volatile boolean active;
 
     /**
-     * riferimento ad un oggeto di tipo PostedBy contenuto nella mailBox
+     * variabile booleana che segnala la fine della processazione dei messaggi
      */
-    private PostedBy<T,ActorRef<T>> posted;
+    private volatile boolean finished;
+
     /**
      * Self-reference of the actor
      */
@@ -84,7 +81,7 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
     public AbsActor(){
         mailBox = new MailBoxImpl<>();
         active = true;
-        haveFinished = false;
+        finished = false;
         startReciveProcess();
     }
 
@@ -100,45 +97,58 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
             @Override
             public void run() {
                 try {
+                    // fino a che l'attore è attivo
                     while ( active ) {
-                        while ( mailBox.isEmpty() ) {
+                        // se la mailBox è vuota e l'attore è attivo
+                        while ( mailBox.isEmpty() && active) {
                             synchronized (mailBox) {
-
+                                // mi metto in attesa sulla mailBox
                                 mailBox.wait();
 
                             }
                         }
-                        synchronized (mailBox) {
-                            // recupero il messagio più vecchio presente nella mailBox
-                            posted = mailBox.removeLast();
-                            // imposto sender con il riferimento del sender del messaggio
-                            sender = posted.getSender();
-                            // invoco il metodo recive passandoli il messaggio
-                            receive(posted.getMessage());
+                        // se l'attore è attivo e la mailbox non è vuota
+                        if (!mailBox.isEmpty()){
+                            synchronized (mailBox) {
+                                // recupero il messagio più vecchio presente nella mailBox
+                                PostedBy<T,ActorRef<T>> posted = mailBox.removeLast();
+                                // imposto sender con il riferimento del sender del messaggio
+                                sender = posted.getSender();
+                                // invoco il metodo recive passandoli il messaggio
+                                receive(posted.getMessage());
+                            }
                         }
                     }
                 }
                 catch (InterruptedException ie) {
                     ie.printStackTrace();
+                    // se il thread viene interrotto inaspettatamente disattivo l'attore
+                    deactiveActor();
                 }
                 finally {
                     // L'attore non è più attivo quindi devo svuotare la mailBox
                     while ( !mailBox.isEmpty() ) {
-                        synchronized (mailBox) {
+                        synchronized (AbsActor.this) {
                             // recupero il messagio più vecchio presente nella mailBox
-                            posted = mailBox.removeLast();
+                            PostedBy<T,ActorRef<T>> posted = mailBox.removeLast();
                             // imposto sender con il riferimento del sender del messaggio
                             sender = posted.getSender();
                             // invoco il metodo recive passandoli il messaggio
                             receive(posted.getMessage());
-
                         }
+                    }
+
+                    // mi sincronizzo sull'atore
+                    synchronized (AbsActor.this){
+                        // segnalo la ternimazione del processo
+                        AbsActor.this.finished = true;
+                        // notifico al thread in attesa sull'attore
+                        AbsActor.this.notifyAll();
                     }
                 }
             }
         });
 
-        //reciveProcess = new Thread( new ReciveProcess(this,mailBox) );
         // avvio il thread reciveProcess
         reciveProcess.start();
     }
@@ -154,10 +164,29 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
      * Disattiva l'attore su cui viene invocato
      * e si occupa di svuotare la mailBox dai messaggi rimanenti
      */
-    public void deactiveActor() {
+    public synchronized void deactiveActor() throws NoSuchActorException{
         // disattivo l'attore mettendolo a false
-        active = false;
+        if (active) {
+            // disattivo l'attore
+            active = false;
+            // se l'attore è in wait e nessuno invia messaggi devo notificarlo
+            synchronized (mailBox) {
+                mailBox.notifyAll();
+            }
+        }
+        else {
+            // se l'attore è gia stato stoppato l'ancio un eccezione
+            throw new NoSuchActorException("Attore gia stoppato!");
+        }
+    }
 
+    /**
+     * Restitisce lo stato del processo di gestione
+     * dei messaggi da pare dell'attore
+     * @return true se il processo è finto, false altimenti
+     */
+    public boolean haveFinished() {
+        return finished;
     }
 
     /**
@@ -173,10 +202,14 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
         Thread addMessage = new Thread(new Runnable() {
             @Override
             public void run() {
+                // se l'attore è attivo
                 if( active ) {
                     synchronized (mailBox) {
+                        // creo un oggetto PostedBy
                         PostedBy<T,ActorRef<T>> posted = new PostedBy<>(message, send);
+                        // aggiungo l'oggetto alla mailBox
                         mailBox.add(posted);
+                        // notifico a chi è in attesa sulla mailBox che 'è un nuovo messaggio
                         mailBox.notifyAll();
                     }
                 }
@@ -198,4 +231,5 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
         this.self = self;
         return this;
     }
+
 }
