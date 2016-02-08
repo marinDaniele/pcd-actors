@@ -65,7 +65,7 @@
       <file leaf-file-name="AllMessagesProcessedTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/AllMessagesProcessedTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5619266">
+            <state vertical-scroll-proportion="0.53808755">
               <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -927,7 +927,7 @@
       <workItem from="1454754636473" duration="7088000" />
       <workItem from="1454781428186" duration="3461000" />
       <workItem from="1454846869168" duration="2961000" />
-      <workItem from="1454923211588" duration="1107000" />
+      <workItem from="1454923211588" duration="1131000" />
     </task>
     <task id="LOCAL-00001" summary="reinizio">
       <created>1453219304661</created>
@@ -977,7 +977,13 @@
       <option name="project" value="LOCAL" />
       <updated>1454924300423</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Ricontrollato il codice e effettuati tutti i test">
+      <created>1454924327526</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1454924327526</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1013,7 +1019,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70614000" />
+    <option name="totallyTimeSpent" value="70638000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1279" height="737" extended-state="6" />
@@ -1026,7 +1032,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.50282943" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28062016" sideWeight="0.49717057" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28062016" sideWeight="0.49717057" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25303152" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1473,7 +1479,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/AllMessagesProcessedTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5619266">
+        <state vertical-scroll-proportion="0.53808755">
           <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
