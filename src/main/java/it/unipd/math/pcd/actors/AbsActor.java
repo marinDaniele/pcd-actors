@@ -192,33 +192,23 @@ public abstract class AbsActor<T extends Message> implements Actor<T> {
     /**
      * Metodo che avvia un thread per aggiungere un messaggio alla mailBox
      * Il messaggio verrà inserito alla mailBox solamente se l'attore è attivo
-     * @param message oggetto di tipo derivato Message
+     * @param message oggetto di tipo derivato da Message
      * @param send oggetto di tipo derivato da ActorRef
      */
     public void addToMailBox(final T message, final ActorRef<T> send) {
 
-        // Creo un thread che aggiunge un messaggio alla mailBox
+        // Aggiunge un messaggio alla mailBox
         // solamente se l'attore è ancora attivo
-        Thread addMessage = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // se l'attore è attivo
-                if( active ) {
-                    synchronized (mailBox) {
-                        // creo un oggetto PostedBy
-                        PostedBy<T,ActorRef<T>> posted = new PostedBy<>(message, send);
-                        // aggiungo l'oggetto alla mailBox
-                        mailBox.add(posted);
-                        // notifico a chi è in attesa sulla mailBox che 'è un nuovo messaggio
-                        mailBox.notifyAll();
-                    }
-                }
+        if( active ) {
+            synchronized (mailBox) {
+                // creo un oggetto PostedBy
+                PostedBy<T,ActorRef<T>> posted = new PostedBy<>(message, send);
+                // aggiungo l'oggetto alla mailBox
+                mailBox.add(posted);
+                // notifico a chi è in attesa sulla mailBox che c'è un nuovo messaggio
+                mailBox.notifyAll();
             }
-        });
-
-        // avvio il thread
-        addMessage.start();
-
+        }
     }
 
     /**

@@ -24,15 +24,15 @@ public class AllMessagesProcessedTest {
     }
 
     @Test
-    public void shouldCreateAnActorRefWithActorOfTest() {
-        ActorRef ref = system.actorOf(TrivialActor.class);
+    public void shouldCreateAnActorRefWithMyActorOfTest() {
+        ActorRef ref = system.actorOf(MyTestActor.class);
         Assert.assertNotNull("A reference was created and it is not null", ref);
     }
 
 
     // test che verifica che l'attore processi tutti i messaggi
     @Test
-    public void actoreProcessAllMessages() {
+    public void actorShouldProcessAllMessages() {
         ActorRef ref1 = system.actorOf(MyTestActor.class);
 
         Actor act = ((MyTestActorSystem)system).giveMeActor(ref1);
@@ -45,11 +45,12 @@ public class AllMessagesProcessedTest {
 
         system.stop(ref1);
 
-
+        // messaggi spediti all'attore effettivamente aggiunti alla sua mailBox
         int sendM = ((MyTestActorSystem)system).getNumSendMessages();
+        // messaggi presenti nella mailBox dell'attore che sono stati processati
         int reciveM = ((MyTestActorSystem)system).getRecivedMessage();
 
-        Assert.assertEquals("devono essere processati tutti i messaggi",sendM,reciveM);
+        Assert.assertEquals("Devono essere processati tutti i messaggi effettivamente spediti", sendM, reciveM);
 
     }
 }

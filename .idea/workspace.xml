@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69f1b4d9-749f-446c-add7-5daedd5b692b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/AllMessagesProcessedTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/MyTestActorSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/AbsActor$1.class" afterPath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/AbsActor$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/AbsActor$2.class" afterPath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/AbsActor$2.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/AbsActor$2.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/AbsActor.class" afterPath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/AbsActor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/BasicActorSystem.class" afterPath="$PROJECT_DIR$/target/classes/it/unipd/math/pcd/actors/BasicActorSystem.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/it/unipd/math/pcd/actors/ActorSystemTest.class" afterPath="$PROJECT_DIR$/target/test-classes/it/unipd/math/pcd/actors/ActorSystemTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/it/unipd/math/pcd/actors/utils/actors/MyTestActor.class" afterPath="$PROJECT_DIR$/target/test-classes/it/unipd/math/pcd/actors/utils/actors/MyTestActor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/AbsActor.java" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/AbsActor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/BasicActorSystem.java" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/BasicActorSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/ActorSystemTest.java" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/ActorSystemTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/AllMessagesProcessedTest.java" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/AllMessagesProcessedTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/MyTestActorSystem.java" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/MyTestActorSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/actors/MyTestActor.java" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/actors/MyTestActor.java" />
     </list>
     <ignored path="pcd-actors.iws" />
@@ -50,24 +45,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyTestActorSystem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MyTestActorSystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/MyTestActorSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5527523">
-              <caret line="68" column="60" selection-start-line="68" selection-start-column="60" selection-end-line="68" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="94" column="39" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActorSystemTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/ActorSystemTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -76,22 +61,17 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/actors/MyTestActor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="91" column="91" selection-start-line="91" selection-start-column="91" selection-end-line="91" selection-end-column="91" />
-              <folding>
-                <element signature="e#1805#1806#0" expanded="true" />
-                <element signature="e#1831#1832#0" expanded="true" />
-                <element signature="e#2100#3027#0" expanded="true" />
-                <element signature="e#3026#3027#0" expanded="true" />
-              </folding>
+              <caret line="71" column="12" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AllMessagesProcessedTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AllMessagesProcessedTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/AllMessagesProcessedTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.5619266">
+              <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/AbsActor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+              <caret line="194" column="50" selection-start-line="194" selection-start-column="50" selection-end-line="194" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -139,12 +119,12 @@
         <option value="$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/ActorRefImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/ReciveProcess.java" />
         <option value="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/ActorSystemTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/AbsActor.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/BasicActorSystem.java" />
         <option value="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/FullMessageProcessedTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/AllMessagesProcessedTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/actors/MyTestActor.java" />
         <option value="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/MyTestActorSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/AbsActor.java" />
+        <option value="$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/AllMessagesProcessedTest.java" />
       </list>
     </option>
   </component>
@@ -278,6 +258,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="actors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="actors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pcd-actors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pcd-actors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -292,9 +306,9 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -916,7 +930,9 @@
       <workItem from="1454683537348" duration="674000" />
       <workItem from="1454689339997" duration="7682000" />
       <workItem from="1454754636473" duration="7088000" />
-      <workItem from="1454781428186" duration="2636000" />
+      <workItem from="1454781428186" duration="3461000" />
+      <workItem from="1454846869168" duration="2961000" />
+      <workItem from="1454923211588" duration="1015000" />
     </task>
     <task id="LOCAL-00001" summary="reinizio">
       <created>1453219304661</created>
@@ -954,47 +970,53 @@
       <option name="project" value="LOCAL" />
       <updated>1454611602335</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Aggiunto il test AllMessagesProcessedTest">
+      <created>1454784109084</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1454784109084</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_pcd-actors - 2016.02.06 at 13h 48m 03s.xml">
+    <history-entry file="All_in_pcd-actors - 2016.02.07 at 15h 15m 56s.xml">
       <configuration name="All in pcd-actors" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_pcd-actors - 2016.02.06 at 13h 49m 00s.xml">
+    <history-entry file="All_in_pcd-actors - 2016.02.07 at 15h 17m 52s.xml">
       <configuration name="All in pcd-actors" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_pcd-actors - 2016.02.06 at 13h 49m 29s.xml">
+    <history-entry file="All_in_pcd-actors - 2016.02.07 at 15h 22m 32s.xml">
       <configuration name="All in pcd-actors" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_pcd-actors - 2016.02.06 at 19h 21m 00s.xml">
+    <history-entry file="All_in_pcd-actors - 2016.02.07 at 15h 31m 02s.xml">
       <configuration name="All in pcd-actors" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_pcd-actors - 2016.02.06 at 19h 27m 31s.xml">
+    <history-entry file="All_in_pcd-actors - 2016.02.07 at 15h 32m 04s.xml">
       <configuration name="All in pcd-actors" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_pcd-actors - 2016.02.06 at 19h 27m 41s.xml">
+    <history-entry file="All_in_pcd-actors - 2016.02.07 at 15h 33m 22s.xml">
       <configuration name="All in pcd-actors" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_pcd-actors - 2016.02.06 at 19h 28m 00s.xml">
+    <history-entry file="All_in_pcd-actors - 2016.02.07 at 15h 35m 19s.xml">
       <configuration name="All in pcd-actors" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_pcd-actors - 2016.02.06 at 19h 32m 52s.xml">
+    <history-entry file="All_in_pcd-actors - 2016.02.07 at 15h 36m 18s.xml">
       <configuration name="All in pcd-actors" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_pcd-actors - 2016.02.06 at 19h 33m 21s.xml">
+    <history-entry file="All_in_pcd-actors - 2016.02.08 at 10h 32m 46s.xml">
       <configuration name="All in pcd-actors" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_pcd-actors - 2016.02.06 at 19h 33m 27s.xml">
+    <history-entry file="All_in_pcd-actors - 2016.02.08 at 10h 36m 37s.xml">
       <configuration name="All in pcd-actors" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65721000" />
+    <option name="totallyTimeSpent" value="70522000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1279" height="737" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1003,10 +1025,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.50282943" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28062016" sideWeight="0.49717057" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28062016" sideWeight="0.49717057" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25303152" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25303152" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1066,7 +1088,8 @@
     <MESSAGE value="test" />
     <MESSAGE value="ridefinito metodo deactive()" />
     <MESSAGE value="modificato il thread di gestione messaggi" />
-    <option name="LAST_COMMIT_MESSAGE" value="modificato il thread di gestione messaggi" />
+    <MESSAGE value="Aggiunto il test AllMessagesProcessedTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunto il test AllMessagesProcessedTest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1364,13 +1387,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/actors/TrivialActor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="13" selection-start-line="0" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/MailBox.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1395,14 +1411,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/AbsActor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/BasicActorSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1419,33 +1427,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/AllMessagesProcessedTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/actors/TrivialActor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/ActorSystemFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/actors/MyTestActor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="91" selection-start-line="91" selection-start-column="91" selection-end-line="91" selection-end-column="91" />
-          <folding>
-            <element signature="e#1805#1806#0" expanded="true" />
-            <element signature="e#1831#1832#0" expanded="true" />
-            <element signature="e#2100#3027#0" expanded="true" />
-            <element signature="e#3026#3027#0" expanded="true" />
-          </folding>
+          <caret line="71" column="12" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/utils/MyTestActorSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5527523">
-          <caret line="68" column="60" selection-start-line="68" selection-start-column="60" selection-end-line="68" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="94" column="39" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/unipd/math/pcd/actors/AbsActor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="194" column="50" selection-start-line="194" selection-start-column="50" selection-end-line="194" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/it/unipd/math/pcd/actors/AllMessagesProcessedTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5619266">
+          <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

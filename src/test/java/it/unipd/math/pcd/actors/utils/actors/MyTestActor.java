@@ -56,35 +56,37 @@ public class MyTestActor extends TrivialActor {
         refAs = as;
     }
 
+    /**
+     * Metodo del tutto uguale a quello della classe AbsActor
+     * ma che subito dopo l'aggiunta del messagio nella mailBox
+     * incrementa un contatore che tiene conto dei messaggi
+     * effettivamente aggiunti alla mailBox
+     * Questo metodo viene utilizzato esclusivamente
+     * nel test AllMessagesProcessedTest
+     * @param message oggetto di tipo derivato Message
+     * @param send oggetto di tipo derivato da ActorRef
+     */
     @Override
     public void addToMailBox(final TrivialMessage message, final ActorRef<TrivialMessage> send) {
 
-        // Creo un thread che aggiunge un messaggio alla mailBox
+        // Aggiunge un messaggio alla mailBox
         // solamente se l'attore è ancora attivo
-        Thread addMessage = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                if( isActive() ) {
-                    synchronized (mailBox) {
-                        PostedBy<TrivialMessage,ActorRef<TrivialMessage>> posted = new PostedBy<>(message, send);
-                        mailBox.add(posted);
-                        /**
-                         * Decommentare l'operazione solamente per
-                         * effettuare il test AllMessagesProcessedTest
-                         * L'operazione incrementa un contatore
-                         * che conta i pessaggi effettivamenti aggiunti alla mailBox
-                         */
-                        synchronized (this){ numeroMessaggiInviati++;}
+        if( isActive() ) {
+            synchronized (mailBox) {
+                PostedBy<TrivialMessage,ActorRef<TrivialMessage>> posted = new PostedBy<>(message, send);
+                mailBox.add(posted);
+                /**
+                 * Decommentare l'operazione solamente per
+                 * effettuare il test AllMessagesProcessedTest
+                 * L'operazione incrementa un contatore
+                 * che conta i pessaggi effettivamenti aggiunti alla mailBox
+                 */
+                synchronized (this){ numeroMessaggiInviati++;}
 
-                        // notifico a chi è in attesa sulla mailBox che 'è un nuovo messaggio
-                        mailBox.notifyAll();
-                    }
-                }
+                // notifico a chi è in attesa sulla mailBox che 'è un nuovo messaggio
+                mailBox.notifyAll();
             }
-        });
-
-        // avvio il thread
-        addMessage.start();
+        }
 
     }
 
